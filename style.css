@@ -63,3 +63,41 @@ body {
   filter: brightness(1.1);
   color: #fff;
 }
+.card-img {
+  height: 130px;
+  background: #eef2f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  border-radius: 12px 12px 0 0;
+}
+
+.price {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.badge-promo {
+  background: #fff3cd;
+  color: #7d4f00;
+  font-size: .72rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.btn-add {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: .85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-add:hover {
+  filter: brightness(1.12);
+}
