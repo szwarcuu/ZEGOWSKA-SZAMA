@@ -1,5 +1,6 @@
 <?php
-session_start();
+require_once 'auth.php';
+require_admin();
 require_once 'db.php';
 
 function e($text) {
@@ -101,8 +102,9 @@ $products = $conn->query('SELECT * FROM products ORDER BY id DESC');
   <div class="container-fluid">
     <a class="navbar-brand" href="admin.php">Zegowska Szama - Admin</a>
     <div class="d-flex align-items-center gap-3">
-      <span class="text-white-50" style="font-size:.85rem">Produkty</span>
+      <span class="text-white-50" style="font-size:.85rem">Zalogowany: <?= e($_SESSION['name']) ?></span>
       <a href="index.php" class="btn btn-sm btn-outline-light">Wroc do sklepu</a>
+      <a href="logout.php" class="btn btn-sm btn-warning">Wyloguj</a>
     </div>
   </div>
 </nav>
@@ -117,6 +119,12 @@ $products = $conn->query('SELECT * FROM products ORDER BY id DESC');
         </a>
         <a href="products.php" class="d-flex align-items-center gap-2 p-2 rounded mb-1 text-decoration-none fw-semibold" style="background:#f0f4f8; color:#1a3c5e; font-size:.9rem">
           <i class="bi bi-box-seam"></i> Produkty
+        </a>
+        <a href="users.php" class="d-flex align-items-center gap-2 p-2 rounded mb-1 text-decoration-none text-muted" style="font-size:.9rem">
+          <i class="bi bi-people"></i> Uzytkownicy
+        </a>
+        <a href="orders.php" class="d-flex align-items-center gap-2 p-2 rounded mb-1 text-decoration-none text-muted" style="font-size:.9rem">
+          <i class="bi bi-receipt"></i> Zamowienia
         </a>
       </div>
     </div>

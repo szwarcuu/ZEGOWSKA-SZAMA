@@ -42,6 +42,9 @@ $is_admin = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
         </a>
         <?php if (isset($_SESSION['user_id'])): ?>
           <span class="text-white-50" style="font-size:.85rem"><?= e($_SESSION['name']) ?></span>
+          <a href="logout.php" class="btn btn-sm btn-outline-light rounded-pill px-3">
+            Wyloguj
+          </a>
         <?php else: ?>
           <a href="login.php" class="btn btn-sm btn-outline-light rounded-pill px-3">
             Zaloguj sie
@@ -74,7 +77,15 @@ $is_admin = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
       <span class="fw-semibold" style="color:#7d4f00">Promocje tylko dla zalogowanych!</span>
       <span class="ms-2 text-muted" style="font-size:.88rem">Po zalogowaniu rabat zostanie policzony w koszyku.</span>
     </div>
+<<<<<<< HEAD
     <a href="login.php" class="btn btn-sm btn-warning fw-semibold px-4">Zaloguj sie</a>
+=======
+    <?php if (isset($_SESSION['user_id'])): ?>
+      <a href="logout.php" class="btn btn-sm btn-outline-secondary fw-semibold px-4">Wyloguj</a>
+    <?php else: ?>
+      <a href="login.php" class="btn btn-sm btn-warning fw-semibold px-4">Zaloguj sie</a>
+    <?php endif; ?>
+>>>>>>> 05c8341 (Zabezpieczono panel admina i dodano wylogowanie)
   </div>
 </div>
 
