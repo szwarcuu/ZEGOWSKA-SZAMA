@@ -1,0 +1,200 @@
+[33mcommit b6bfa5a772c9e87ad73b2309095e5ce116320dbb[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author:     Tymon Jaszke <tymonjaszke@gmail.com>
+AuthorDate: Mon May 18 01:43:28 2026 +0200
+Commit:     Tymon Jaszke <tymonjaszke@gmail.com>
+CommitDate: Mon May 18 01:43:28 2026 +0200
+
+    Dodano panel admina i obsługę produktów z bazy danych
+
+[33mcommit 7aa1be933eb5cbeb9ef15f37cc541b0c3745f431[m
+Author:     szwarcu <jan.szwarc.zeg@gmail.com>
+AuthorDate: Sun May 17 00:31:12 2026 +0200
+Commit:     szwarcu <jan.szwarc.zeg@gmail.com>
+CommitDate: Sun May 17 00:31:12 2026 +0200
+
+    Naprawa sciezki do dashboarad
+
+[33mcommit 5bd0d8078d828ba21b313743ac5e6579d0810ae0[m
+Author:     szwarcu <jan.szwarc.zeg@gmail.com>
+AuthorDate: Sun May 17 00:24:27 2026 +0200
+Commit:     szwarcu <jan.szwarc.zeg@gmail.com>
+CommitDate: Sun May 17 00:24:27 2026 +0200
+
+    Stworzenie podstrony orders.html w panelu admina
+
+[33mcommit 35d80403da712936758870af49ebc1a19754991c[m
+Author:     szwarcu <jan.szwarc.zeg@gmail.com>
+AuthorDate: Sun May 17 00:24:01 2026 +0200
+Commit:     szwarcu <jan.szwarc.zeg@gmail.com>
+CommitDate: Sun May 17 00:24:01 2026 +0200
+
+    Stworzenie podstrony products.html w panelu admina
+
+[33mcommit 0058eae8e192d24a6931e2149feb17ac7efd0a07[m
+Author:     szwarcu <jan.szwarc.zeg@gmail.com>
+AuthorDate: Sun May 17 00:23:18 2026 +0200
+Commit:     szwarcu <jan.szwarc.zeg@gmail.com>
+CommitDate: Sun May 17 00:23:18 2026 +0200
+
+    Stworzenie podstrony users.html w panelu admina
+
+[33mcommit f144c79341889413b8eaf0e03bfc9f3b905fa08e[m
+Author:     szwarcu <jan.szwarc.zeg@gmail.com>
+AuthorDate: Sun May 17 00:22:48 2026 +0200
+Commit:     szwarcu <jan.szwarc.zeg@gmail.com>
+CommitDate: Sun May 17 00:22:48 2026 +0200
+
+    Stworzenie szkieletu panelu admina
+
+[33mcommit 5b6d9a3392444d4dc0383f359dacba2575f82df0[m
+Author:     szwarcu <jan.szwarc.zeg@gmail.com>
+AuthorDate: Sun May 17 00:12:48 2026 +0200
+Commit:     szwarcu <jan.szwarc.zeg@gmail.com>
+CommitDate: Sun May 17 00:12:48 2026 +0200
+
+    Naprawa ustawienia produktow
+
+[33mcommit 760be17ed4bb729349e23f7fd49488b0ab12a182[m
+Author:     szwarcu <jan.szwarc.zeg@gmail.com>
+AuthorDate: Sun May 17 00:10:55 2026 +0200
+Commit:     szwarcu <jan.szwarc.zeg@gmail.com>
+CommitDate: Sun May 17 00:10:55 2026 +0200
+
+    Dodanie 2 nowych produktow na stronie glownej
+
+[33mcommit 59a6fca384d12f94863d52c8a2b7151f8e405068[m
+Author:     szwarcu <jan.szwarc.zeg@gmail.com>
+AuthorDate: Sat May 16 23:58:44 2026 +0200
+Commit:     szwarcu <jan.szwarc.zeg@gmail.com>
+CommitDate: Sat May 16 23:58:44 2026 +0200
+
+    Stworzenie strony rejestracji register.html
+
+[33mcommit 1783e298e26adf3643e3ae4079a5388a5441a8d6[m
+Author:     szwarcu <jan.szwarc.zeg@gmail.com>
+AuthorDate: Sat May 16 18:14:34 2026 +0200
+Commit:     szwarcu <jan.szwarc.zeg@gmail.com>
+CommitDate: Sat May 16 18:14:34 2026 +0200
+
+    stworzenie strony logowania login.html
+
+[33mcommit de92cd4e274407f767c20f4ff827a20bb1490310[m
+Author:     szwarcu <jan.szwarc.zeg@gmail.com>
+AuthorDate: Fri May 15 17:43:04 2026 +0200
+Commit:     szwarcu <jan.szwarc.zeg@gmail.com>
+CommitDate: Fri May 15 17:43:04 2026 +0200
+
+    Stylowanie footera
+
+[33mcommit 032363d485864ea488b5fee5e7b32b7ab07433f6[m
+Author:     szwarcu <jan.szwarc.zeg@gmail.com>
+AuthorDate: Fri May 15 16:45:34 2026 +0200
+Commit:     szwarcu <jan.szwarc.zeg@gmail.com>
+CommitDate: Fri May 15 16:45:34 2026 +0200
+
+    Stylowanie kart produktów
+
+[33mcommit b9060aa451b66bbf06f64c228bc4313248795d09[m
+Author:     szwarcu <jan.szwarc.zeg@gmail.com>
+AuthorDate: Wed May 13 21:31:55 2026 +0200
+Commit:     szwarcu <jan.szwarc.zeg@gmail.com>
+CommitDate: Wed May 13 21:31:55 2026 +0200
+
+    Stylowanie sekcji hero
+
+[33mcommit 82012d50a6f851ef08a1b3ebd62f6193f6b94165[m
+Author:     szwarcu <jan.szwarc.zeg@gmail.com>
+AuthorDate: Wed May 13 20:37:42 2026 +0200
+Commit:     szwarcu <jan.szwarc.zeg@gmail.com>
+CommitDate: Wed May 13 20:37:42 2026 +0200
+
+    Zmiana sciezki pliku style.css
+
+[33mcommit eb0183a592d545926c171bb9ec28cd46175b530e[m
+Author:     szwarcu <jan.szwarc.zeg@gmail.com>
+AuthorDate: Wed May 13 20:35:42 2026 +0200
+Commit:     szwarcu <jan.szwarc.zeg@gmail.com>
+CommitDate: Wed May 13 20:35:42 2026 +0200
+
+    Dodanie zmiennych CSS i stylowanie znacznika body
+
+[33mcommit 4063bc4dafe7f51b6c8d5c12b69347da5f67a26b[m
+Author:     szwarcu <jan.szwarc.zeg@gmail.com>
+AuthorDate: Wed May 13 20:33:33 2026 +0200
+Commit:     szwarcu <jan.szwarc.zeg@gmail.com>
+CommitDate: Wed May 13 20:33:33 2026 +0200
+
+    Dodanie zmiennych CSS i stylowanie body
+
+[33mcommit 62cfdb63dc53bf74e5110153c1b54b87e1de8a76[m
+Author:     szwarcu <jan.szwarc.zeg@gmail.com>
+AuthorDate: Wed May 13 20:25:20 2026 +0200
+Commit:     szwarcu <jan.szwarc.zeg@gmail.com>
+CommitDate: Wed May 13 20:25:20 2026 +0200
+
+    Dodanie footera
+
+[33mcommit 4877e7ae1499ab8bcec38077c4b888a533955066[m
+Author:     szwarcu <jan.szwarc.zeg@gmail.com>
+AuthorDate: Mon May 11 22:58:43 2026 +0200
+Commit:     szwarcu <jan.szwarc.zeg@gmail.com>
+CommitDate: Mon May 11 22:58:43 2026 +0200
+
+    Dodanie kart produktów
+
+[33mcommit dc4e9bd26afab89cd976b856601c760280dec40e[m
+Author:     szwarcu <jan.szwarc.zeg@gmail.com>
+AuthorDate: Sat May 9 22:40:19 2026 +0200
+Commit:     szwarcu <jan.szwarc.zeg@gmail.com>
+CommitDate: Sat May 9 22:40:19 2026 +0200
+
+    Dodanie wyszukiwarki i filtra kategorii
+
+[33mcommit bdd1525bacb73cf43c33bc672cc9e5cf4308a49b[m
+Author:     szwarcu <jan.szwarc.zeg@gmail.com>
+AuthorDate: Sat May 9 22:39:45 2026 +0200
+Commit:     szwarcu <jan.szwarc.zeg@gmail.com>
+CommitDate: Sat May 9 22:39:45 2026 +0200
+
+    Dodanie banera promocji
+
+[33mcommit 2e689a51243d2cffa5ddd430440784e754a8b21b[m
+Merge: 4c76a8f bde3c4e
+Author:     szwarcu <jan.szwarc.zeg@gmail.com>
+AuthorDate: Wed May 6 21:09:00 2026 +0200
+Commit:     szwarcu <jan.szwarc.zeg@gmail.com>
+CommitDate: Wed May 6 21:09:00 2026 +0200
+
+    Merge branch 'main' of https://github.com/szwarcuu/ZEGOWSKA-SZAMA
+
+[33mcommit 4c76a8f52f710c4c08bdd933b59577c865606190[m
+Author:     szwarcu <jan.szwarc.zeg@gmail.com>
+AuthorDate: Wed May 6 21:08:52 2026 +0200
+Commit:     szwarcu <jan.szwarc.zeg@gmail.com>
+CommitDate: Wed May 6 21:08:52 2026 +0200
+
+    Dodanie sekcji hero
+
+[33mcommit bde3c4edfed141e3e51226bb3a7e706759b69220[m
+Author:     Jan Szwarc <jan.szwarc.zeg@gmail.com>
+AuthorDate: Mon May 4 16:20:50 2026 +0200
+Commit:     GitHub <noreply@github.com>
+CommitDate: Mon May 4 16:20:50 2026 +0200
+
+    Create README.md
+
+[33mcommit 43582234a9baed68a84cca1f1073a216ecbe0663[m
+Author:     szwarcu <jan.szwarc.zeg@gmail.com>
+AuthorDate: Mon May 4 16:13:37 2026 +0200
+Commit:     szwarcu <jan.szwarc.zeg@gmail.com>
+CommitDate: Mon May 4 16:13:37 2026 +0200
+
+    Dodanie navbara z menu i przyciskiem logowania
+
+[33mcommit b7d240875018748a4bdcb3e45bf4968da61ac535[m
+Author:     szwarcu <jan.szwarc.zeg@gmail.com>
+AuthorDate: Mon May 4 16:08:16 2026 +0200
+Commit:     szwarcu <jan.szwarc.zeg@gmail.com>
+CommitDate: Mon May 4 16:08:16 2026 +0200
+
+    Szkielet HTML i podłączenie Bootstrap

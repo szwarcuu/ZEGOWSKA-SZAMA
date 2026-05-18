@@ -40,9 +40,13 @@ $is_admin = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
         <a href="#" class="nav-link text-white-50">
           <i class="bi bi-cart3 fs-5"></i>
         </a>
-        <a href="login.html" class="btn btn-sm btn-outline-light rounded-pill px-3">
-          Zaloguj sie
-        </a>
+        <?php if (isset($_SESSION['user_id'])): ?>
+          <span class="text-white-50" style="font-size:.85rem"><?= e($_SESSION['name']) ?></span>
+        <?php else: ?>
+          <a href="login.php" class="btn btn-sm btn-outline-light rounded-pill px-3">
+            Zaloguj sie
+          </a>
+        <?php endif; ?>
       </div>
     </div>
   </div>
@@ -70,7 +74,7 @@ $is_admin = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
       <span class="fw-semibold" style="color:#7d4f00">Promocje tylko dla zalogowanych!</span>
       <span class="ms-2 text-muted" style="font-size:.88rem">Po zalogowaniu rabat zostanie policzony w koszyku.</span>
     </div>
-    <a href="login.html" class="btn btn-sm btn-warning fw-semibold px-4">Zaloguj sie</a>
+    <a href="login.php" class="btn btn-sm btn-warning fw-semibold px-4">Zaloguj sie</a>
   </div>
 </div>
 
