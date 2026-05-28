@@ -306,9 +306,9 @@ function renderCart() {
 
 if (orderSaved) {
   localStorage.removeItem(cartKey);
+} else {
+  renderCart();
 }
-
-renderCart();
 
 if (orderForm) {
   orderForm.addEventListener('submit', function() {
