@@ -129,7 +129,13 @@ $is_admin = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
             </div>
             <div class="d-flex align-items-center justify-content-between mt-2">
               <span class="price"><?= number_format((float)$product['price'], 2, ',', ' ') ?> zl</span>
-              <button class="btn-add" type="button">Dodaj</button>
+              <button class="btn-add"
+                      type="button"
+                      data-id="<?= (int)$product['id'] ?>"
+                      data-name="<?= e($product['name']) ?>"
+                      data-price="<?= number_format((float)$product['price'], 2, '.', '') ?>">
+                Dodaj
+              </button>
             </div>
           </div>
         </div>
@@ -182,6 +188,63 @@ function filterProducts() {
 
 search.addEventListener('input', filterProducts);
 category.addEventListener('change', filterProducts);
+
+const cartKey = 'zegowska_cart';
+const addButtons = document.querySelectorAll('.btn-add');
+
+function getCart() {
+  const savedCart = localStorage.getItem(cartKey);
+
+  if (!savedCart) {
+    return [];
+  }
+
+  try {
+    return JSON.parse(savedCart);
+  } catch (error) {
+    return [];
+  }
+}
+
+function saveCart(cart) {
+  localStorage.setItem(cartKey, JSON.stringify(cart));
+}
+
+function addToCart(product) {
+  const cart = getCart();
+  const existingProduct = cart.find(function(item) {
+    return item.id === product.id;
+  });
+
+  if (existingProduct) {
+    existingProduct.quantity += 1;
+  } else {
+    cart.push({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      quantity: 1
+    });
+  }
+
+  saveCart(cart);
+}
+
+addButtons.forEach(function(button) {
+  button.addEventListener('click', function() {
+    addToCart({
+      id: button.dataset.id,
+      name: button.dataset.name,
+      price: parseFloat(button.dataset.price)
+    });
+
+    button.textContent = 'Dodano';
+
+    setTimeout(function() {
+      button.textContent = 'Dodaj';
+    }, 900);
+  });
+});
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
