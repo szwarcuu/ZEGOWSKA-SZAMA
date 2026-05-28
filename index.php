@@ -37,8 +37,9 @@ $is_admin = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
         <?php endif; ?>
       </ul>
       <div class="d-flex gap-2 align-items-center">
-        <a href="#" class="nav-link text-white-50">
+        <a href="#" class="nav-link text-white-50 position-relative">
           <i class="bi bi-cart3 fs-5"></i>
+          <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark">0</span>
         </a>
         <?php if (isset($_SESSION['user_id'])): ?>
           <span class="text-white-50" style="font-size:.85rem"><?= e($_SESSION['name']) ?></span>
@@ -191,6 +192,7 @@ category.addEventListener('change', filterProducts);
 
 const cartKey = 'zegowska_cart';
 const addButtons = document.querySelectorAll('.btn-add');
+const cartCount = document.getElementById('cart-count');
 
 function getCart() {
   const savedCart = localStorage.getItem(cartKey);
@@ -208,6 +210,16 @@ function getCart() {
 
 function saveCart(cart) {
   localStorage.setItem(cartKey, JSON.stringify(cart));
+  updateCartCount();
+}
+
+function updateCartCount() {
+  const cart = getCart();
+  const count = cart.reduce(function(sum, item) {
+    return sum + item.quantity;
+  }, 0);
+
+  cartCount.textContent = count;
 }
 
 function addToCart(product) {
@@ -245,6 +257,8 @@ addButtons.forEach(function(button) {
     }, 900);
   });
 });
+
+updateCartCount();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
