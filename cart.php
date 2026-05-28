@@ -52,6 +52,7 @@ function e($text) {
               <th>Ilosc</th>
               <th>Cena</th>
               <th>Razem</th>
+              <th>Akcje</th>
             </tr>
           </thead>
           <tbody id="cart-items" style="font-size:.9rem"></tbody>
@@ -92,6 +93,10 @@ function formatPrice(price) {
   return price.toFixed(2).replace('.', ',') + ' zl';
 }
 
+function saveCart(cart) {
+  localStorage.setItem(cartKey, JSON.stringify(cart));
+}
+
 function renderCart() {
   const cart = getCart();
   cartItems.innerHTML = '';
@@ -116,17 +121,54 @@ function renderCart() {
     const quantityCell = document.createElement('td');
     const priceCell = document.createElement('td');
     const totalCell = document.createElement('td');
+    const actionsCell = document.createElement('td');
+    const quantityInput = document.createElement('input');
+    const removeButton = document.createElement('button');
 
     nameCell.textContent = item.name;
-    quantityCell.textContent = item.quantity;
+    quantityInput.type = 'number';
+    quantityInput.min = '1';
+    quantityInput.value = item.quantity;
+    quantityInput.className = 'form-control form-control-sm';
+    quantityInput.style.width = '80px';
+
+    quantityInput.addEventListener('change', function() {
+      const newQuantity = parseInt(quantityInput.value, 10);
+
+      if (newQuantity < 1 || isNaN(newQuantity)) {
+        quantityInput.value = item.quantity;
+        return;
+      }
+
+      item.quantity = newQuantity;
+      saveCart(cart);
+      renderCart();
+    });
+
+    quantityCell.appendChild(quantityInput);
     priceCell.textContent = formatPrice(item.price);
     totalCell.textContent = formatPrice(itemTotal);
     totalCell.className = 'fw-semibold';
+
+    removeButton.type = 'button';
+    removeButton.className = 'btn btn-sm btn-outline-danger';
+    removeButton.textContent = 'Usun';
+    removeButton.addEventListener('click', function() {
+      const newCart = cart.filter(function(cartItem) {
+        return cartItem.id !== item.id;
+      });
+
+      saveCart(newCart);
+      renderCart();
+    });
+
+    actionsCell.appendChild(removeButton);
 
     row.appendChild(nameCell);
     row.appendChild(quantityCell);
     row.appendChild(priceCell);
     row.appendChild(totalCell);
+    row.appendChild(actionsCell);
 
     cartItems.appendChild(row);
   });
