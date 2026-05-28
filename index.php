@@ -37,7 +37,7 @@ $is_admin = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
         <?php endif; ?>
       </ul>
       <div class="d-flex gap-2 align-items-center">
-        <a href="#" class="nav-link text-white-50 position-relative">
+        <a href="cart.php" class="nav-link text-white-50 position-relative">
           <i class="bi bi-cart3 fs-5"></i>
           <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark">0</span>
         </a>
