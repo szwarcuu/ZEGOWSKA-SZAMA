@@ -8,9 +8,12 @@ function e($text) {
 }
 
 $orders = $conn->query(
-  'SELECT orders.id, orders.total_amount, orders.status, orders.created_at, users.name, users.email
+  'SELECT orders.id, orders.total_amount, orders.status, orders.created_at, users.name, users.email,
+          GROUP_CONCAT(CONCAT(order_items.product_name, " x", order_items.quantity) SEPARATOR ", ") AS products
    FROM orders
    JOIN users ON orders.user_id = users.id
+   LEFT JOIN order_items ON orders.id = order_items.order_id
+   GROUP BY orders.id, orders.total_amount, orders.status, orders.created_at, users.name, users.email
    ORDER BY orders.created_at DESC'
 );
 ?>
@@ -66,6 +69,7 @@ $orders = $conn->query(
                 <th>#</th>
                 <th>Uzytkownik</th>
                 <th>E-mail</th>
+                <th>Produkty</th>
                 <th>Data</th>
                 <th>Kwota</th>
                 <th>Status</th>
@@ -74,7 +78,7 @@ $orders = $conn->query(
             <tbody style="font-size:.88rem">
               <?php if ($orders->num_rows === 0): ?>
                 <tr>
-                  <td colspan="6" class="text-muted">Brak zamowien.</td>
+                  <td colspan="7" class="text-muted">Brak zamowien.</td>
                 </tr>
               <?php endif; ?>
 
@@ -83,6 +87,7 @@ $orders = $conn->query(
                   <td><?= (int)$order['id'] ?></td>
                   <td><?= e($order['name']) ?></td>
                   <td><?= e($order['email']) ?></td>
+                  <td><?= e($order['products'] ?? '') ?></td>
                   <td><?= e($order['created_at']) ?></td>
                   <td><?= number_format((float)$order['total_amount'], 2, ',', ' ') ?> zl</td>
                   <td><span class="badge text-bg-warning"><?= e($order['status']) ?></span></td>
