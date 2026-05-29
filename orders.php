@@ -1,10 +1,18 @@
 <?php
 require_once 'auth.php';
 require_admin();
+require_once 'db.php';
 
 function e($text) {
   return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
 }
+
+$orders = $conn->query(
+  'SELECT orders.id, orders.total_amount, orders.status, orders.created_at, users.name, users.email
+   FROM orders
+   JOIN users ON orders.user_id = users.id
+   ORDER BY orders.created_at DESC'
+);
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -51,7 +59,38 @@ function e($text) {
     <div class="col-12 col-md-10">
       <div class="bg-white rounded-3 border p-4">
         <h6 class="fw-bold mb-3" style="color:#1a3c5e">Zamowienia</h6>
-        <p class="mb-0 text-muted">Widok zamowien zostanie rozbudowany po dodaniu koszyka i skladania zamowien.</p>
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead style="font-size:.85rem; color:#6b7a8d">
+              <tr>
+                <th>#</th>
+                <th>Uzytkownik</th>
+                <th>E-mail</th>
+                <th>Data</th>
+                <th>Kwota</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody style="font-size:.88rem">
+              <?php if ($orders->num_rows === 0): ?>
+                <tr>
+                  <td colspan="6" class="text-muted">Brak zamowien.</td>
+                </tr>
+              <?php endif; ?>
+
+              <?php while ($order = $orders->fetch_assoc()): ?>
+                <tr>
+                  <td><?= (int)$order['id'] ?></td>
+                  <td><?= e($order['name']) ?></td>
+                  <td><?= e($order['email']) ?></td>
+                  <td><?= e($order['created_at']) ?></td>
+                  <td><?= number_format((float)$order['total_amount'], 2, ',', ' ') ?> zl</td>
+                  <td><span class="badge text-bg-warning"><?= e($order['status']) ?></span></td>
+                </tr>
+              <?php endwhile; ?>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
