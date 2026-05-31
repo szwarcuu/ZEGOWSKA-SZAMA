@@ -1,7 +1,7 @@
 <?php
-require_once 'includes/auth.php';
+require_once '../includes/auth.php';
 require_admin();
-require_once 'includes/db.php';
+require_once '../includes/db.php';
 
 $product_count = $conn->query('SELECT COUNT(*) AS total FROM products')->fetch_assoc()['total'];
 ?>
