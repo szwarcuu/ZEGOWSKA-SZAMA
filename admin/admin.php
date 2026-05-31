@@ -22,8 +22,8 @@ $product_count = $conn->query('SELECT COUNT(*) AS total FROM products')->fetch_a
     <a class="navbar-brand" href="admin.php">Zegowska Szama - Admin</a>
     <div class="d-flex align-items-center gap-3">
       <span class="text-white-50" style="font-size:.85rem">Zalogowany: <?= htmlspecialchars($_SESSION['name'], ENT_QUOTES, 'UTF-8') ?></span>
-      <a href="index.php" class="btn btn-sm btn-outline-light">Wroc do sklepu</a>
-      <a href="logout.php" class="btn btn-sm btn-warning">Wyloguj</a>
+      <a href="../index.php" class="btn btn-sm btn-outline-light">Wroc do sklepu</a>
+      <a href="../logout.php" class="btn btn-sm btn-warning">Wyloguj</a>
     </div>
   </div>
 </nav>
