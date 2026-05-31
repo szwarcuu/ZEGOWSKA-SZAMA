@@ -1,7 +1,7 @@
 <?php
-require_once 'auth.php';
+require_once 'includes/auth.php';
 require_admin();
-require_once 'db.php';
+require_once 'includes/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_user_id'])) {
     $delete_user_id = (int)$_POST['delete_user_id'];
@@ -44,7 +44,7 @@ $users = $conn->query('SELECT id, login, name, email, role, created_at FROM user
   <title>Uzytkownicy - Zegowska Szama</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
-  <link href="style.css" rel="stylesheet"/>
+  <link href="css/style.css" rel="stylesheet"/>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg">

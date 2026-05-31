@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'db.php';
+require_once 'includes/db.php';
 
 function e($text) {
   return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
@@ -17,7 +17,7 @@ $is_admin = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
   <title>Zegowska Szama</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
-  <link href="style.css" rel="stylesheet"/>
+  <link href="css/style.css" rel="stylesheet"/>
 </head>
 <body>
 
@@ -33,7 +33,13 @@ $is_admin = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
         <li class="nav-item"><a class="nav-link" href="#produkty">Produkty</a></li>
         <li class="nav-item"><a class="nav-link" href="#promocje">Promocje</a></li>
         <?php if ($is_admin): ?>
-          <li class="nav-item"><a class="nav-link" href="products.php">Panel admina</a></li>
+          <?php if ($is_admin): ?>
+  <li class="nav-item ms-2">
+    <a href="admin.php" class="btn btn-warning btn-sm fw-bold text-dark">
+      <i class="bi bi-shield-lock-fill"></i> Panel admina
+    </a>
+  </li>
+<?php endif; ?>
         <?php endif; ?>
       </ul>
       <div class="d-flex gap-2 align-items-center">
