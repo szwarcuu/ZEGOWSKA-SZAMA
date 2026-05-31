@@ -3,6 +3,22 @@ require_once 'auth.php';
 require_admin();
 require_once 'db.php';
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['order_id'], $_POST['status'])) {
+    $order_id = (int)$_POST['order_id'];
+    $status = $_POST['status'];
+
+    $allowed_statuses = ['pending', 'accepted', 'completed', 'cancelled'];
+
+    if (in_array($status, $allowed_statuses, true)) {
+        $stmt = $conn->prepare('UPDATE orders SET status = ? WHERE id = ?');
+        $stmt->bind_param('si', $status, $order_id);
+        $stmt->execute();
+    }
+
+    header('Location: orders.php');
+    exit;
+}
+
 function e($text) {
   return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
 }
@@ -90,7 +106,33 @@ $orders = $conn->query(
                   <td><?= e($order['products'] ?? '') ?></td>
                   <td><?= e($order['created_at']) ?></td>
                   <td><?= number_format((float)$order['total_amount'], 2, ',', ' ') ?> zl</td>
-                  <td><span class="badge text-bg-warning"><?= e($order['status']) ?></span></td>
+                  <td>
+    <form method="POST" class="d-flex gap-2">
+        <input type="hidden" name="order_id" value="<?= (int)$order['id'] ?>">
+
+        <select name="status" class="form-select form-select-sm">
+            <option value="pending" <?= $order['status'] === 'pending' ? 'selected' : '' ?>>
+                Oczekujące
+            </option>
+
+            <option value="accepted" <?= $order['status'] === 'accepted' ? 'selected' : '' ?>>
+                Przyjęte
+            </option>
+
+            <option value="completed" <?= $order['status'] === 'completed' ? 'selected' : '' ?>>
+                Zrealizowane
+            </option>
+
+            <option value="cancelled" <?= $order['status'] === 'cancelled' ? 'selected' : '' ?>>
+                Anulowane
+            </option>
+        </select>
+
+        <button type="submit" class="btn btn-sm btn-primary">
+            Zapisz
+        </button>
+    </form>
+</td>
                 </tr>
               <?php endwhile; ?>
             </tbody>
