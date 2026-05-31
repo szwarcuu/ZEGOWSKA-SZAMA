@@ -65,7 +65,7 @@ $is_admin = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
         <a href="#produkty" class="btn-accent">Zobacz produkty</a>
       </div>
       <div class="col-md-5 text-center d-none d-md-block">
-        <div style="font-size: 5rem;">🥪🥤🍫</div>
+        <div style="font-size: 5rem;"><img src="./logo_zeg.png" alt="logo"></div>
       </div>
     </div>
   </div>
@@ -116,7 +116,9 @@ $is_admin = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
            data-category="<?= e($product['category']) ?>"
            data-name="<?= e($product['name']) ?>">
         <div class="card h-100">
-          <div class="card-img">🍽️</div>
+          <div class="card-img">
+  <img src="<?= e($product['image']) ?>" alt="<?= e($product['name']) ?>" class="img-fluid">
+</div>
           <div class="card-body d-flex flex-column">
             <div class="d-flex align-items-center gap-2 mb-1">
               <span class="fw-semibold"><?= e($product['name']) ?></span>
