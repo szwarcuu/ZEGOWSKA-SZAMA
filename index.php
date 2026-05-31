@@ -122,21 +122,40 @@ $is_admin = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
           <div class="card-body d-flex flex-column">
             <div class="d-flex align-items-center gap-2 mb-1">
               <span class="fw-semibold"><?= e($product['name']) ?></span>
-              <?php if ((int)$product['is_promo'] === 1): ?>
+              <?php if (isset($_SESSION['user_id']) && (int)$product['is_promo'] === 1): ?>
                 <span class="badge-promo">Promo</span>
-              <?php endif; ?>
+            <?php endif; ?>
             </div>
             <div class="text-muted" style="font-size:.82rem; flex:1"><?= e($product['description']) ?></div>
             <div class="text-muted mt-2" style="font-size:.82rem">
               Dostepne: <?= (int)$product['stock'] ?> szt.
             </div>
             <div class="d-flex align-items-center justify-content-between mt-2">
-              <span class="price"><?= number_format((float)$product['price'], 2, ',', ' ') ?> zl</span>
+              <?php
+                $price = (float)$product['price'];
+                $isPromoForUser = isset($_SESSION['user_id']) && (int)$product['is_promo'] === 1;
+                $promoPrice = round($price * 0.9, 2);
+              ?>
+
+<?php if ($isPromoForUser): ?>
+    <div>
+        <div style="font-size:.8rem;color:#999;text-decoration:line-through;">
+            <?= number_format($price, 2, ',', ' ') ?> zl
+        </div>
+        <div style="font-weight:700;color:#198754;">
+            <?= number_format($promoPrice, 2, ',', ' ') ?> zl
+        </div>
+    </div>
+<?php else: ?>
+    <span class="price">
+        <?= number_format($price, 2, ',', ' ') ?> zl
+    </span>
+<?php endif; ?>
               <button class="btn-add"
                       type="button"
                       data-id="<?= (int)$product['id'] ?>"
                       data-name="<?= e($product['name']) ?>"
-                      data-price="<?= number_format((float)$product['price'], 2, '.', '') ?>">
+                      data-price="<?= $isPromoForUser ? number_format($promoPrice, 2, '.', '') : number_format($price, 2, '.', '') ?>">
                 Dodaj
               </button>
             </div>
