@@ -3,6 +3,19 @@ require_once 'auth.php';
 require_admin();
 require_once 'db.php';
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_user_id'])) {
+    $delete_user_id = (int)$_POST['delete_user_id'];
+
+    if ($delete_user_id !== (int)$_SESSION['user_id']) {
+        $stmt = $conn->prepare('DELETE FROM users WHERE id = ?');
+        $stmt->bind_param('i', $delete_user_id);
+        $stmt->execute();
+    }
+
+    header('Location: users.php');
+    exit;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['user_id'], $_POST['role'])) {
     $user_id = (int)$_POST['user_id'];
     $role = $_POST['role'];
@@ -78,6 +91,7 @@ $users = $conn->query('SELECT id, login, name, email, role, created_at FROM user
                 <th>E-mail</th>
                 <th>Rola</th>
                 <th>Data rejestracji</th>
+                <th>Akcje</th>
               </tr>
             </thead>
             <tbody style="font-size:.88rem">
@@ -107,6 +121,18 @@ $users = $conn->query('SELECT id, login, name, email, role, created_at FROM user
     </form>
 </td>
                   <td><?= e($user['created_at']) ?></td>
+                  <td>
+    <?php if ((int)$user['id'] !== (int)$_SESSION['user_id']): ?>
+        <form method="POST" onsubmit="return confirm('Czy na pewno usunac uzytkownika?')">
+            <input type="hidden" name="delete_user_id" value="<?= (int)$user['id'] ?>">
+            <button type="submit" class="btn btn-sm btn-danger">
+                Usun
+            </button>
+        </form>
+    <?php else: ?>
+        <span class="text-muted">Aktualne konto</span>
+    <?php endif; ?>
+</td>
                 </tr>
               <?php endwhile; ?>
             </tbody>
