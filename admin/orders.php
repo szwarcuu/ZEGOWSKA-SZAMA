@@ -1,7 +1,7 @@
 <?php
-require_once 'includes/auth.php';
+require_once '../includes/auth.php';
 require_admin();
-require_once 'includes/db.php';
+require_once '../includes/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['order_id'], $_POST['status'])) {
     $order_id = (int)$_POST['order_id'];
@@ -41,7 +41,7 @@ $orders = $conn->query(
   <title>Zamowienia - Zegowska Szama</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
-  <link href="css/style.css" rel="stylesheet"/>
+  <link href="../css/style.css" rel="stylesheet"/>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg">
@@ -49,8 +49,8 @@ $orders = $conn->query(
     <a class="navbar-brand" href="admin.php">Zegowska Szama - Admin</a>
     <div class="d-flex align-items-center gap-3">
       <span class="text-white-50" style="font-size:.85rem">Zalogowany: <?= e($_SESSION['name']) ?></span>
-      <a href="index.php" class="btn btn-sm btn-outline-light">Wroc do sklepu</a>
-      <a href="logout.php" class="btn btn-sm btn-warning">Wyloguj</a>
+      <a href="../index.php" class="btn btn-sm btn-outline-light">Wroc do sklepu</a>
+      <a href="../logout.php" class="btn btn-sm btn-warning">Wyloguj</a>
     </div>
   </div>
 </nav>

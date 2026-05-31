@@ -35,7 +35,7 @@ $is_admin = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
         <?php if ($is_admin): ?>
           <?php if ($is_admin): ?>
   <li class="nav-item ms-2">
-    <a href="admin.php" class="btn btn-warning btn-sm fw-bold text-dark">
+    <a href="admin/admin.php" class="btn btn-warning btn-sm fw-bold text-dark">
       <i class="bi bi-shield-lock-fill"></i> Panel admina
     </a>
   </li>
@@ -71,7 +71,7 @@ $is_admin = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
         <a href="#produkty" class="btn-accent">Zobacz produkty</a>
       </div>
       <div class="col-md-5 text-center d-none d-md-block">
-        <div style="font-size: 5rem;"><img src="./logo_zeg.png" alt="logo"></div>
+        <div style="font-size: 5rem;"><img src="assets/images/logo_zeg.png" alt="logo"></div>
       </div>
     </div>
   </div>
