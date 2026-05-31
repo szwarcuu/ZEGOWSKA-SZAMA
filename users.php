@@ -3,6 +3,20 @@ require_once 'auth.php';
 require_admin();
 require_once 'db.php';
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['user_id'], $_POST['role'])) {
+    $user_id = (int)$_POST['user_id'];
+    $role = $_POST['role'];
+
+    if (in_array($role, ['user', 'admin'], true)) {
+        $stmt = $conn->prepare('UPDATE users SET role = ? WHERE id = ?');
+        $stmt->bind_param('si', $role, $user_id);
+        $stmt->execute();
+    }
+
+    header('Location: users.php');
+    exit;
+}
+
 function e($text) {
   return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
 }
@@ -73,7 +87,25 @@ $users = $conn->query('SELECT id, login, name, email, role, created_at FROM user
                   <td><?= e($user['login']) ?></td>
                   <td><?= e($user['name']) ?></td>
                   <td><?= e($user['email']) ?></td>
-                  <td><?= e($user['role']) ?></td>
+                  <td>
+    <form method="POST" class="d-flex gap-2">
+        <input type="hidden" name="user_id" value="<?= (int)$user['id'] ?>">
+
+        <select name="role" class="form-select form-select-sm">
+            <option value="user" <?= $user['role'] === 'user' ? 'selected' : '' ?>>
+                User
+            </option>
+
+            <option value="admin" <?= $user['role'] === 'admin' ? 'selected' : '' ?>>
+                Admin
+            </option>
+        </select>
+
+        <button type="submit" class="btn btn-sm btn-primary">
+            Zapisz
+        </button>
+    </form>
+</td>
                   <td><?= e($user['created_at']) ?></td>
                 </tr>
               <?php endwhile; ?>
